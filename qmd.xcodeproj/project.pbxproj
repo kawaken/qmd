@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		B962A14E2BA087B5003927D6 /* qmdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A14D2BA087B5003927D6 /* qmdApp.swift */; };
-		B962A1502BA087B5003927D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A14F2BA087B5003927D6 /* ContentView.swift */; };
 		B962A1522BA087B7003927D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B962A1512BA087B7003927D6 /* Assets.xcassets */; };
 		B962A1562BA087B7003927D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B962A1552BA087B7003927D6 /* Preview Assets.xcassets */; };
 		B962A1602BA087B7003927D6 /* qmdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A15F2BA087B7003927D6 /* qmdTests.swift */; };
 		B962A16A2BA087B7003927D6 /* qmdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A1692BA087B7003927D6 /* qmdUITests.swift */; };
 		B962A16C2BA087B7003927D6 /* qmdUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A16B2BA087B7003927D6 /* qmdUITestsLaunchTests.swift */; };
+		B962A1792BA08EF7003927D6 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A1782BA08EF7003927D6 /* EditorView.swift */; };
+		B962A17B2BA09261003927D6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A17A2BA09261003927D6 /* Settings.swift */; };
+		B962A1822BA096DD003927D6 /* FontPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A1812BA096DD003927D6 /* FontPicker.swift */; };
+		B96E28462BA19C07007B48F4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96E28452BA19C07007B48F4 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		B962A14A2BA087B5003927D6 /* qmd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qmd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B962A14D2BA087B5003927D6 /* qmdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qmdApp.swift; sourceTree = "<group>"; };
-		B962A14F2BA087B5003927D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B962A1512BA087B7003927D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B962A1532BA087B7003927D6 /* qmd.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = qmd.entitlements; sourceTree = "<group>"; };
 		B962A1552BA087B7003927D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,6 +47,10 @@
 		B962A1652BA087B7003927D6 /* qmdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qmdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B962A1692BA087B7003927D6 /* qmdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qmdUITests.swift; sourceTree = "<group>"; };
 		B962A16B2BA087B7003927D6 /* qmdUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qmdUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B962A1782BA08EF7003927D6 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		B962A17A2BA09261003927D6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		B962A1812BA096DD003927D6 /* FontPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPicker.swift; sourceTree = "<group>"; };
+		B96E28452BA19C07007B48F4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +101,13 @@
 		B962A14C2BA087B5003927D6 /* qmd */ = {
 			isa = PBXGroup;
 			children = (
+				B962A17E2BA094B2003927D6 /* Views */,
+				B962A17D2BA094AB003927D6 /* Models */,
 				B962A14D2BA087B5003927D6 /* qmdApp.swift */,
-				B962A14F2BA087B5003927D6 /* ContentView.swift */,
 				B962A1512BA087B7003927D6 /* Assets.xcassets */,
 				B962A1532BA087B7003927D6 /* qmd.entitlements */,
 				B962A1542BA087B7003927D6 /* Preview Content */,
+				B962A17A2BA09261003927D6 /* Settings.swift */,
 			);
 			path = qmd;
 			sourceTree = "<group>";
@@ -127,6 +135,23 @@
 				B962A16B2BA087B7003927D6 /* qmdUITestsLaunchTests.swift */,
 			);
 			path = qmdUITests;
+			sourceTree = "<group>";
+		};
+		B962A17D2BA094AB003927D6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B962A1812BA096DD003927D6 /* FontPicker.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B962A17E2BA094B2003927D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B962A1782BA08EF7003927D6 /* EditorView.swift */,
+				B96E28452BA19C07007B48F4 /* SettingsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +284,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B962A1502BA087B5003927D6 /* ContentView.swift in Sources */,
+				B96E28462BA19C07007B48F4 /* SettingsView.swift in Sources */,
+				B962A1822BA096DD003927D6 /* FontPicker.swift in Sources */,
+				B962A1792BA08EF7003927D6 /* EditorView.swift in Sources */,
+				B962A17B2BA09261003927D6 /* Settings.swift in Sources */,
 				B962A14E2BA087B5003927D6 /* qmdApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,11 +445,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = qmd/qmd.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"qmd/Preview Content\"";
+				DEVELOPMENT_TEAM = S5UN44Z38S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -453,11 +484,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = qmd/qmd.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"qmd/Preview Content\"";
+				DEVELOPMENT_TEAM = S5UN44Z38S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
