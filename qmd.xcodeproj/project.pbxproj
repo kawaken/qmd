@@ -16,7 +16,9 @@
 		B962A1792BA08EF7003927D6 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A1782BA08EF7003927D6 /* EditorView.swift */; };
 		B962A17B2BA09261003927D6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A17A2BA09261003927D6 /* Settings.swift */; };
 		B962A1822BA096DD003927D6 /* FontPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962A1812BA096DD003927D6 /* FontPicker.swift */; };
+		B96A686D2BCAD84E00F35CBB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B96A686C2BCAD84E00F35CBB /* Info.plist */; };
 		B96E28462BA19C07007B48F4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96E28452BA19C07007B48F4 /* SettingsView.swift */; };
+		B9CD50ED2BCACC0500ABFFBC /* QMDDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CD50EC2BCACC0500ABFFBC /* QMDDocument.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +52,9 @@
 		B962A1782BA08EF7003927D6 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		B962A17A2BA09261003927D6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B962A1812BA096DD003927D6 /* FontPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPicker.swift; sourceTree = "<group>"; };
+		B96A686C2BCAD84E00F35CBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B96E28452BA19C07007B48F4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B9CD50EC2BCACC0500ABFFBC /* QMDDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QMDDocument.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		B962A14C2BA087B5003927D6 /* qmd */ = {
 			isa = PBXGroup;
 			children = (
+				B96A686C2BCAD84E00F35CBB /* Info.plist */,
 				B962A17E2BA094B2003927D6 /* Views */,
 				B962A17D2BA094AB003927D6 /* Models */,
 				B962A14D2BA087B5003927D6 /* qmdApp.swift */,
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				B962A1812BA096DD003927D6 /* FontPicker.swift */,
+				B9CD50EC2BCACC0500ABFFBC /* QMDDocument.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 			files = (
 				B962A1562BA087B7003927D6 /* Preview Assets.xcassets in Resources */,
 				B962A1522BA087B7003927D6 /* Assets.xcassets in Resources */,
+				B96A686D2BCAD84E00F35CBB /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96E28462BA19C07007B48F4 /* SettingsView.swift in Sources */,
+				B9CD50ED2BCACC0500ABFFBC /* QMDDocument.swift in Sources */,
 				B962A1822BA096DD003927D6 /* FontPicker.swift in Sources */,
 				B962A1792BA08EF7003927D6 /* EditorView.swift in Sources */,
 				B962A17B2BA09261003927D6 /* Settings.swift in Sources */,
@@ -452,6 +460,7 @@
 				DEVELOPMENT_TEAM = S5UN44Z38S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = qmd/Info.plist;
 				INFOPLIST_KEY_LSUIElement = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -471,10 +480,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.kawaken.qmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -491,6 +500,7 @@
 				DEVELOPMENT_TEAM = S5UN44Z38S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = qmd/Info.plist;
 				INFOPLIST_KEY_LSUIElement = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -510,10 +520,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.kawaken.qmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

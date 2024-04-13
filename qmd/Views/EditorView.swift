@@ -8,21 +8,10 @@
 import SwiftUI
 
 struct EditorView: View {
-    enum Mode: String, CaseIterable, Identifiable {
-        case edit = "Edit"
-        
-        var id: String { rawValue}
-    }
+    @State var text: String = ""
     
-    @State private var content = ""
-    @State private var mode = Mode.edit
-        
     var body: some View {
-        HStack(spacing: 0.0) {
-            if mode == .edit {
-                TextEditor(text: $content)
-            }
-        }
+        TextEditor(text: $text)
     }
 }
 
