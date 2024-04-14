@@ -12,6 +12,8 @@ struct EditorView: View {
     
     var body: some View {
         TextEditor(text: $text)
+            .padding(10)
+            .background(.white)
     }
 }
 
