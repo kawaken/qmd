@@ -11,7 +11,7 @@ import SwiftUI
 struct qmdApp: App {
 
     var body: some Scene {
-        DocumentGroup(newDocument: { QMDDocument() }) { configuration in
+        WindowGroup {
             EditorView()
         }
     }
