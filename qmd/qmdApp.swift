@@ -9,7 +9,7 @@ import SwiftUI
 import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
-    static let toggleMainWindow = Self("toggleMainWindow", default: Shortcut(.a, modifiers: [.command, .shift]))
+    static let showMainWindow = Self("showMainWindow", default: Shortcut(.a, modifiers: [.command, .shift]))
 }
 
 @main
@@ -19,9 +19,6 @@ struct qmdApp: App {
 
     @StateObject private var appState = AppState()
 
-    init () {
-        print("hogehoge")
-    }
     var body: some Scene {
         WindowGroup {
             EditorView()
@@ -53,9 +50,8 @@ struct qmdApp: App {
 final class AppState: ObservableObject {
     
     init() {
-        print("fugafuga")
-        KeyboardShortcuts.onKeyUp(for: .toggleMainWindow) {
-            print("toggle")
+        KeyboardShortcuts.onKeyUp(for: .showMainWindow) {
+            print("show")
         }
     }
 }

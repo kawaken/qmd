@@ -10,8 +10,12 @@ import KeyboardShortcuts
 
 struct SettingsView: View {
     var body: some View {
-        Form {
-            KeyboardShortcuts.Recorder("Toggle Main Window:", name: .toggleMainWindow)
+        TabView {
+            KeyboardShortcuts.Recorder("Show Main Window:", name: .showMainWindow)
+                .tabItem {
+                    Label("Shortcut", systemImage: "keyboard")
+                }
         }
+        .frame(width: 400, height: 300)
     }
 }
