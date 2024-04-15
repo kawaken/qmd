@@ -20,7 +20,7 @@ struct qmdApp: App {
     @StateObject private var appState = AppState()
 
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: "main-window") {
             EditorView()
         }
         
@@ -49,9 +49,11 @@ struct qmdApp: App {
 @MainActor
 final class AppState: ObservableObject {
     
+    @Environment(\.openWindow) private var openWindow
+    
     init() {
-        KeyboardShortcuts.onKeyUp(for: .showMainWindow) {
-            print("show")
+        KeyboardShortcuts.onKeyUp(for: .showMainWindow) { [self] in
+            self.openWindow(id: "main-window")
         }
     }
 }
