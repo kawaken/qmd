@@ -6,46 +6,57 @@
 //
 
 import SwiftUI
+import KeyboardShortcuts
+
+extension KeyboardShortcuts.Name {
+    static let toggleMainWindow = Self("toggleMainWindow", default: Shortcut(.a, modifiers: [.command, .shift]))
+}
 
 @main
 struct qmdApp: App {
 
+    @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
+
+    @StateObject private var appState = AppState()
+
+    init () {
+        print("hogehoge")
+    }
     var body: some Scene {
         WindowGroup {
             EditorView()
         }
+        
+        // システム常駐のメニューバー
+        MenuBarExtra("qmd", systemImage: "star",
+                     isInserted: $showMenuBarExtra)
+        {
+            SettingsLink(label: {
+                Text("設定")
+            })
+            .keyboardShortcut(",")
+            Divider()
+            Button("Quit") {
+                NSApplication.shared.terminate(nil)
+            }.keyboardShortcut("q")
+        }
+
+        // 設定
+        Settings {
+            SettingsView()
+        }
+
     }
-    
-//    @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
-//    
-//    @State private var editorViews: [EditorView] = [EditorView()]
-//    
-//    var body: some Scene {
-//        WindowGroup {
-//            editorViews.first
-//        }
-//        
-//        // システム常駐のメニューバー
-//        MenuBarExtra("qmd", systemImage: "star",
-//                     isInserted: $showMenuBarExtra)
-//        {
-//            Button("エディター") {
-//                let view = EditorView()
-//                editorViews.append(view)
-//            }
-//            SettingsLink(label: {
-//                Text("設定")
-//            })
-//            .keyboardShortcut(",")
-//            Divider()
-//            Button("Quit") {
-//                NSApplication.shared.terminate(nil)
-//            }.keyboardShortcut("q")
-//        }
-//        
-//        // 設定
-//        Settings {
-//            SettingsView()
-//        }
-//    }
 }
+
+@MainActor
+final class AppState: ObservableObject {
+    
+    init() {
+        print("fugafuga")
+        KeyboardShortcuts.onKeyUp(for: .toggleMainWindow) {
+            print("toggle")
+        }
+    }
+}
+

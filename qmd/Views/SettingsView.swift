@@ -6,17 +6,12 @@
 //
 
 import SwiftUI
+import KeyboardShortcuts
 
 struct SettingsView: View {
     var body: some View {
-        TabView {
-            Text("General")
-                .tabItem { Label("General", systemImage: "gear") }
-                .navigationTitle("ParentTitle")
-                .navigationSubtitle("General")
-            Text("Typography")
-                .tabItem { Label("Typography", systemImage: "textformat") }
-            
+        Form {
+            KeyboardShortcuts.Recorder("Toggle Main Window:", name: .toggleMainWindow)
         }
     }
 }
