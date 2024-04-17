@@ -22,7 +22,7 @@ struct qmdApp: App {
     var body: some Scene {
         WindowGroup(id: "main-window") {
             EditorView()
-        }
+        }.windowStyle(HiddenTitleBarWindowStyle())
         
         // システム常駐のメニューバー
         MenuBarExtra("qmd", systemImage: "star",

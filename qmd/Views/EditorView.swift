@@ -16,7 +16,7 @@ struct EditorView: View {
             w.standardWindowButton(.closeButton)?.isEnabled = false
             w.standardWindowButton(.miniaturizeButton)?.isEnabled = false
             w.standardWindowButton(.zoomButton)?.isEnabled = false
-        }
+        }.frame(width:0,height:0) // disable frame
         TextEditor(text: $text)
             .padding(10)
             .background(.white)
