@@ -17,9 +17,15 @@ struct EditorView: View {
             w.standardWindowButton(.miniaturizeButton)?.isEnabled = false
             w.standardWindowButton(.zoomButton)?.isEnabled = false
         }.frame(width:0,height:0) // disable frame
-        TextEditor(text: $text)
-            .padding(10)
-            .background(.white)
+        
+        HStack {
+            TextEditor(text: $text)
+                .padding(10)
+                .background(.white)
+        }
+            .background(KeyEventHandling(modifierFlags: .command, keyUpCharacter: "a") {
+                print(text)
+            })
     }
 }
 
@@ -34,6 +40,60 @@ struct HostingWindowFinder: NSViewRepresentable {
         return view
     }
     
+    func updateNSView(_ nsView: NSView, context: Context) {
+    }
+}
+
+struct KeyEventHandling: NSViewRepresentable {
+    
+    var handler:Handler
+    
+    init(modifierFlags: NSEvent.ModifierFlags, keyUpCharacter: String?, action: @escaping () -> ()) {
+        self.handler = Handler(modifierFlags: modifierFlags, keyUpCharacter:keyUpCharacter, action:action)
+    }
+
+    class Handler {
+        var modifierFlags: NSEvent.ModifierFlags = []
+        var keyUpCharacter: String? = nil
+        var action: () -> ()
+        
+        init(modifierFlags: NSEvent.ModifierFlags, keyUpCharacter: String?, action: @escaping () -> ()) {
+            self.modifierFlags = modifierFlags
+            self.keyUpCharacter = keyUpCharacter
+            self.action = action
+        }
+        
+        func handleEvent(_ event: NSEvent) {
+            print("hello")
+            if (event.modifierFlags.contains(modifierFlags) && event.characters == keyUpCharacter) {
+                self.action()
+            }
+        }
+    }
+    
+    class KeyView: NSView {
+        var handler: Handler?
+        
+        override var acceptsFirstResponder: Bool {
+            true
+        }
+                
+        override func keyUp(with event: NSEvent) {
+            super.keyUp(with: event)
+            handler?.handleEvent(event)
+        }
+    }
+    
+    func makeNSView(context: Context) -> NSView {
+        let view = KeyView()
+        view.handler = handler
+        
+        DispatchQueue.main.async { // wait till next event cycle
+            view.window?.makeFirstResponder(view)
+        }
+        return view
+    }
+
     func updateNSView(_ nsView: NSView, context: Context) {
     }
 }
