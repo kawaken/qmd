@@ -19,10 +19,6 @@ struct qmdApp: App {
 
     @StateObject private var appState = AppState()
     
-#if os(macOS)
-    @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
-#endif
-
     var body: some Scene {
         WindowGroup(id: "main-window") {
             EditorView()
@@ -61,11 +57,3 @@ final class AppState: ObservableObject {
         }
     }
 }
-
-#if os(macOS)
-class AppDelegate: NSObject, NSApplicationDelegate {
-    func applicationDidFinishLaunching(_ notification: Notification) {
-        NSApp.setActivationPolicy(.accessory)
-    }
-}
-#endif
