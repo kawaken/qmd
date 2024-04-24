@@ -18,6 +18,10 @@ struct qmdApp: App {
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
 
     @StateObject private var appState = AppState()
+    
+#if os(macOS)
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
+#endif
 
     var body: some Scene {
         WindowGroup(id: "main-window") {
@@ -57,3 +61,11 @@ final class AppState: ObservableObject {
         }
     }
 }
+
+#if os(macOS)
+class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        NSApp.setActivationPolicy(.accessory)
+    }
+}
+#endif
