@@ -15,7 +15,6 @@ struct EditorView: View {
     var body: some View {
         HostingWindowFinder { window in
             guard let w = window else { return }
-            w.standardWindowButton(.closeButton)?.isEnabled = false
             w.standardWindowButton(.miniaturizeButton)?.isEnabled = false
             w.standardWindowButton(.zoomButton)?.isEnabled = false
         }.frame(width:0,height:0) // disable frame
