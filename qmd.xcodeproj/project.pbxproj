@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		B9E614442BDE396D009A181C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E614432BDE396D009A181C /* AppDelegate.swift */; };
-		B9E614462BDE396D009A181C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E614452BDE396D009A181C /* ViewController.swift */; };
 		B9E614482BDE396E009A181C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9E614472BDE396E009A181C /* Assets.xcassets */; };
 		B9E6144B2BDE396E009A181C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B9E6144A2BDE396E009A181C /* Base */; };
 		B9E614562BDE396E009A181C /* qmdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E614552BDE396E009A181C /* qmdTests.swift */; };
 		B9E614602BDE396E009A181C /* qmdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E6145F2BDE396E009A181C /* qmdUITests.swift */; };
 		B9E614622BDE396E009A181C /* qmdUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E614612BDE396E009A181C /* qmdUITestsLaunchTests.swift */; };
+		B9E6146F2BDE44E6009A181C /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E6146E2BDE44E6009A181C /* StatusBar.swift */; };
+		B9E614712BDE8EDF009A181C /* SettingsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E614702BDE8EDF009A181C /* SettingsContentView.swift */; };
+		B9E614752BDE9F0E009A181C /* TextWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E614742BDE9F0E009A181C /* TextWindow.swift */; };
+		B9E614772BDEA499009A181C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E614762BDEA499009A181C /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		B9E614402BDE396D009A181C /* qmd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qmd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E614432BDE396D009A181C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B9E614452BDE396D009A181C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B9E614472BDE396E009A181C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9E6144A2BDE396E009A181C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B9E6144C2BDE396E009A181C /* qmd.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = qmd.entitlements; sourceTree = "<group>"; };
@@ -45,6 +47,10 @@
 		B9E6145B2BDE396E009A181C /* qmdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qmdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E6145F2BDE396E009A181C /* qmdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qmdUITests.swift; sourceTree = "<group>"; };
 		B9E614612BDE396E009A181C /* qmdUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qmdUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B9E6146E2BDE44E6009A181C /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
+		B9E614702BDE8EDF009A181C /* SettingsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentView.swift; sourceTree = "<group>"; };
+		B9E614742BDE9F0E009A181C /* TextWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWindow.swift; sourceTree = "<group>"; };
+		B9E614762BDEA499009A181C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,10 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				B9E614432BDE396D009A181C /* AppDelegate.swift */,
-				B9E614452BDE396D009A181C /* ViewController.swift */,
 				B9E614472BDE396E009A181C /* Assets.xcassets */,
 				B9E614492BDE396E009A181C /* Main.storyboard */,
 				B9E6144C2BDE396E009A181C /* qmd.entitlements */,
+				B9E6146E2BDE44E6009A181C /* StatusBar.swift */,
+				B9E614702BDE8EDF009A181C /* SettingsContentView.swift */,
+				B9E614742BDE9F0E009A181C /* TextWindow.swift */,
+				B9E614762BDEA499009A181C /* main.swift */,
 			);
 			path = qmd;
 			sourceTree = "<group>";
@@ -251,8 +260,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9E614462BDE396D009A181C /* ViewController.swift in Sources */,
+				B9E614752BDE9F0E009A181C /* TextWindow.swift in Sources */,
+				B9E6146F2BDE44E6009A181C /* StatusBar.swift in Sources */,
+				B9E614772BDEA499009A181C /* main.swift in Sources */,
 				B9E614442BDE396D009A181C /* AppDelegate.swift in Sources */,
+				B9E614712BDE8EDF009A181C /* SettingsContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,8 +442,9 @@
 				DEVELOPMENT_TEAM = S5UN44Z38S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Kentaro Kawano";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,8 +470,9 @@
 				DEVELOPMENT_TEAM = S5UN44Z38S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Kentaro Kawano";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
