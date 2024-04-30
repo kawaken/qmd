@@ -8,16 +8,22 @@
 import Cocoa
 
 class StatusBar: NSObject {
-    private var openQmdAction: (() -> Void)?
+    private var openQmdAction: (() -> Void)
     
-    func configureStatusBar(statusItem: NSStatusItem, openQmdAction: @escaping () -> Void) {
+    init(statusItem: NSStatusItem, openQmdAction: @escaping () -> Void) {
         self.openQmdAction = openQmdAction
         
+        super.init()
+        
+        configureStatusBar(statusItem: statusItem)
+    }
+        
+    func configureStatusBar(statusItem: NSStatusItem) {
         let button = statusItem.button!
         button.image = NSImage(systemSymbolName: "star", accessibilityDescription: nil)
                 
         let menu = NSMenu()
-        let openQmdItem = NSMenuItem(title: "qmdを開く", action: #selector(openQmd), keyEquivalent: "")
+        let openQmdItem = NSMenuItem(title: "qmdを開く", action: #selector(openQmd), keyEquivalent: "e")
         openQmdItem.target = self
         menu.addItem(openQmdItem)
         
@@ -36,7 +42,7 @@ class StatusBar: NSObject {
     
     // "qmdを開く" メニューアイテムの処理
     @objc func openQmd() {
-        openQmdAction?()
+        openQmdAction()
     }
     
     // "設定" メニューアイテムの処理

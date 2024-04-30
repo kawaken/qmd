@@ -22,9 +22,6 @@ class TextWindow: NSWindow {
         self.isReleasedWhenClosed = false
         self.hidesOnDeactivate = true
     }
-}
-
-extension TextWindow {
     
     override var canBecomeMain: Bool {
         true

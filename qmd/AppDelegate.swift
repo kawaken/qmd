@@ -20,14 +20,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         textWindow.center()
         
         NSApp.setActivationPolicy(.accessory)
-
-        let sb = StatusBar()
-        sb.configureStatusBar(statusItem: statusItem) {
+        
+        self.statusBar = StatusBar(statusItem: statusItem) {
             NSApp.activate(ignoringOtherApps: true)
             self.textWindow.makeKeyAndOrderFront(self)
-            
         }
-        self.statusBar = sb
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
