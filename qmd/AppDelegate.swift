@@ -20,11 +20,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         textWindow.center()
         
         NSApp.setActivationPolicy(.accessory)
+
+        // アクセシビリティアクセスが有効かどうか
+        let accessibilityEnabled = AXIsProcessTrusted()
         
-        self.statusBar = StatusBar(statusItem: statusItem) {
+        self.statusBar = StatusBar(statusItem: statusItem, accessibilityEnabled: accessibilityEnabled) {
             NSApp.activate(ignoringOtherApps: true)
             self.textWindow.makeKeyAndOrderFront(self)
         }
+        // 常時アクセシビリティアクセスを監視したくないのでNotificationで処理する
+        setupAccessibilityNotificationObserver()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -35,5 +40,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
+    private func setupAccessibilityNotificationObserver() {
+        // NSWorkspace.didActivateApplicationNotification はアプリケーションが有効になったときに発生するイベントっぽい
+        // 他のどのアプリケーションでも動作するが頻度がそんなに高くなさそうなので、このイベントを利用している
+        NSWorkspace.shared.notificationCenter.addObserver(self,
+                                                          selector: #selector(handleAccessibilityNotification(_:)),
+                                                          name: NSWorkspace.didActivateApplicationNotification,
+                                                          object: nil)
+    }
+    
+    @objc private func handleAccessibilityNotification(_ notification: Notification) {
+        let accessibilityEnabled = AXIsProcessTrusted()
+        self.statusBar?.configureStatusBar(statusItem: self.statusItem, accessibilityEnabled: accessibilityEnabled)
+    }
 }
 

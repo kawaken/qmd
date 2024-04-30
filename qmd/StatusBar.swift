@@ -10,20 +10,27 @@ import Cocoa
 class StatusBar: NSObject {
     private var openQmdAction: (() -> Void)
     
-    init(statusItem: NSStatusItem, openQmdAction: @escaping () -> Void) {
+    init(statusItem: NSStatusItem, accessibilityEnabled: Bool, openQmdAction: @escaping () -> Void) {
         self.openQmdAction = openQmdAction
         
         super.init()
         
-        configureStatusBar(statusItem: statusItem)
+        configureStatusBar(statusItem: statusItem, accessibilityEnabled: accessibilityEnabled)
     }
         
-    func configureStatusBar(statusItem: NSStatusItem) {
+    func configureStatusBar(statusItem: NSStatusItem, accessibilityEnabled: Bool) {
         let button = statusItem.button!
         button.image = NSImage(systemSymbolName: "star", accessibilityDescription: nil)
                 
         let menu = NSMenu()
-        let openQmdItem = NSMenuItem(title: "qmdを開く", action: #selector(openQmd), keyEquivalent: "e")
+        
+        if !accessibilityEnabled {
+            let enableItem = NSMenuItem(title: "グローバルショートカットを有効にする", action: #selector(enableQmd), keyEquivalent: "")
+            enableItem.target = self
+            menu.addItem(enableItem)
+        }
+        
+        let openQmdItem = NSMenuItem(title: "qmdを開く", action: #selector(openQmd), keyEquivalent: "")
         openQmdItem.target = self
         menu.addItem(openQmdItem)
         
@@ -38,6 +45,18 @@ class StatusBar: NSObject {
         menu.addItem(quitItem)
         
         statusItem.menu = menu
+    }
+    
+    // "グローバルショートカットを有効にする" メニューアイテムの処理
+    @objc func enableQmd() {
+        // ユーザーにアクセシビリティアクセスを手動で許可するよう促す
+        let alert = NSAlert()
+        alert.messageText = "アクセシビリティアクセスが必要です"
+        alert.informativeText = "このアプリケーションは正常に動作するためにアクセシビリティアクセスが必要です。「セキュリティとプライバシー」設定からアクセスを許可してください。"
+        alert.runModal()
+        
+        let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
+        AXIsProcessTrustedWithOptions(options)
     }
     
     // "qmdを開く" メニューアイテムの処理
