@@ -9,7 +9,7 @@ import Cocoa
 import SwiftUI
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    // statusItem は AppDelegate の中で取得しないとうまく設定が反映されない
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     private var statusBar: StatusBar?
     private var textWindow: TextWindow!
