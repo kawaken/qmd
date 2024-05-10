@@ -31,6 +31,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         // 常時アクセシビリティアクセスを監視したくないのでNotificationで処理する
         setupAccessibilityNotificationObserver()
+        
+        // 開発中は確認のため起動時に表示させる
+        textWindow.makeKeyAndOrderFront(nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
