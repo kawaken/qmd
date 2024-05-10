@@ -45,6 +45,8 @@ class StatusBar: NSObject {
         menu.addItem(quitItem)
         
         statusItem.menu = menu
+        
+        registerShortcuts()
     }
     
     // "グローバルショートカットを有効にする" メニューアイテムの処理
@@ -72,5 +74,17 @@ class StatusBar: NSObject {
     // "終了" メニューアイテムの処理
     @objc func quitApp() {
         NSApplication.shared.terminate(nil)
+    }
+    
+    // TODO: 連続で実行されてしまう
+    func registerShortcuts() {
+        // グローバルショートカットの登録
+        NSEvent.addGlobalMonitorForEvents(matching: [.keyDown]) { event in
+            if event.modifierFlags.contains(.command) && event.charactersIgnoringModifiers == "q" {
+                print("Cmd+Q")
+            } else if event.modifierFlags.contains(.command) && event.charactersIgnoringModifiers == "," {
+                print("Cmd+,")
+            }
+        }
     }
 }
