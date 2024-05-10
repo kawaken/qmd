@@ -36,11 +36,11 @@ class StatusBar: NSObject {
         
         menu.addItem(NSMenuItem.separator())
         
-        let settingsItem = NSMenuItem(title: "設定", action: #selector(showSettings), keyEquivalent: ",")
+        let settingsItem = NSMenuItem(title: "設定", action: #selector(showSettings), keyEquivalent: "")
         settingsItem.target = self
         menu.addItem(settingsItem)
         
-        let quitItem = NSMenuItem(title: "終了", action: #selector(quitApp), keyEquivalent: "q")
+        let quitItem = NSMenuItem(title: "終了", action: #selector(quitApp), keyEquivalent: "")
         quitItem.target = self
         menu.addItem(quitItem)
         
