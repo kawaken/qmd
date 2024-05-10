@@ -45,3 +45,51 @@ class TextWindow: NSWindow {
         true
     }
 }
+
+struct TextEditorView: View {
+    @State private var text = ""
+    var body: some View {
+        TextEditor(text: $text)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+class NSHostingViewSuppressingSafeArea<T : View>: NSHostingView<T> {
+    required init(rootView: T) {
+        super.init(rootView: rootView)
+
+        addLayoutGuide(layoutGuide)
+        NSLayoutConstraint.activate([
+            leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
+            topAnchor.constraint(equalTo: layoutGuide.topAnchor),
+            trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
+            bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor)
+        ])
+    }
+
+    private lazy var layoutGuide = NSLayoutGuide()
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override var safeAreaRect: NSRect {
+        return frame
+    }
+
+    override var safeAreaInsets: NSEdgeInsets {
+        return NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+
+    override var safeAreaLayoutGuide: NSLayoutGuide {
+        return layoutGuide
+    }
+
+    override var additionalSafeAreaInsets: NSEdgeInsets {
+        get {
+            return NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+
+        set {}
+    }
+}

@@ -18,7 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         textWindow = TextWindow()
         textWindow.center()
-        
+        textWindow.contentView = NSHostingViewSuppressingSafeArea(rootView: TextEditorView())
+
         NSApp.setActivationPolicy(.accessory)
 
         // アクセシビリティアクセスが有効かどうか
