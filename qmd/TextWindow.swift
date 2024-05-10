@@ -46,6 +46,7 @@ class TextWindow: NSWindow {
     }
 }
 
+// TODO: paddingを調整して角丸にする
 struct TextEditorView: View {
     @State private var text = ""
     var body: some View {
@@ -54,6 +55,7 @@ struct TextEditorView: View {
     }
 }
 
+// TODO: 別ファイルに整理する
 class NSHostingViewSuppressingSafeArea<T : View>: NSHostingView<T> {
     required init(rootView: T) {
         super.init(rootView: rootView)
