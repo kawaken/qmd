@@ -28,7 +28,7 @@ class TextWindow: NSWindow {
         
         self.titlebarAppearsTransparent = true
         self.titleVisibility = .hidden
-        
+        self.standardWindowButton(.closeButton)?.isHidden = true
         self.standardWindowButton(.miniaturizeButton)?.isHidden = true
         self.standardWindowButton(.zoomButton)?.isHidden = true
         
