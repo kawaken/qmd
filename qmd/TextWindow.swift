@@ -46,7 +46,7 @@ class TextWindow: NSWindow {
     }
 }
 
-// TODO: paddingを調整して角丸にする
+// TODO: RoundedRectangleのドラッグでWindowを移動できるようにする
 struct TextEditorView: View {
     @State private var text = ""
     var body: some View {
