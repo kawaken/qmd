@@ -50,8 +50,13 @@ class TextWindow: NSWindow {
 struct TextEditorView: View {
     @State private var text = ""
     var body: some View {
-        TextEditor(text: $text)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(.gray.opacity(0.2))
+            TextEditor(text: $text)
+                .padding(10)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
 }
 
