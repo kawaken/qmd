@@ -9,6 +9,7 @@ import Cocoa
 
 class StatusBar: NSObject {
     private var openQmdAction: (() -> Void)
+    private var eventMonitor: Any?
     
     init(statusItem: NSStatusItem, accessibilityEnabled: Bool, openQmdAction: @escaping () -> Void) {
         self.openQmdAction = openQmdAction
@@ -76,15 +77,28 @@ class StatusBar: NSObject {
         NSApplication.shared.terminate(nil)
     }
     
-    // TODO: 連続で実行されてしまう
     func registerShortcuts() {
+        // EventMonitorの多重登録を防ぐ
+        if eventMonitor != nil {
+            return
+        }
+        
         // グローバルショートカットの登録
-        NSEvent.addGlobalMonitorForEvents(matching: [.keyDown]) { event in
+        eventMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.keyDown]) { event in
             if event.modifierFlags.contains(.command) && event.charactersIgnoringModifiers == "q" {
                 print("Cmd+Q")
             } else if event.modifierFlags.contains(.command) && event.charactersIgnoringModifiers == "," {
                 print("Cmd+,")
             }
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(removeEventMonitor), name: NSApplication.willTerminateNotification, object: nil)
+
+    }
+    
+    @objc func removeEventMonitor() {
+        if let em = eventMonitor {
+            NSEvent.removeMonitor(em)
         }
     }
 }
