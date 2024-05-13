@@ -17,24 +17,17 @@ class TextWindow: NSWindow {
         
         // ウィンドウのcontentRectを設定
         let contentRect = NSRect(x: 0, y: 0, width: windowWidth, height: windowHeight)
-        let styleMask: NSWindow.StyleMask = [
-            .titled,
-            .closable,
-            .resizable,
-            .fullSizeContentView
-        ]
         
-        super.init(contentRect: contentRect, styleMask: styleMask, backing: .buffered, defer: false)
-        
-        self.titlebarAppearsTransparent = true
-        self.titleVisibility = .hidden
-        self.standardWindowButton(.closeButton)?.isHidden = true
-        self.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        self.standardWindowButton(.zoomButton)?.isHidden = true
+        super.init(contentRect: contentRect, styleMask: [.borderless, .resizable], backing: .buffered, defer: false)
         
         self.level = .floating
+        self.backgroundColor = .clear
+        self.isOpaque = false
+        
         self.isReleasedWhenClosed = false
         self.hidesOnDeactivate = true
+        
+        self.isMovableByWindowBackground = true
     }
     
     override var canBecomeMain: Bool {
@@ -44,15 +37,23 @@ class TextWindow: NSWindow {
     override var canBecomeKey: Bool {
         true
     }
+    
+    override var acceptsMouseMovedEvents: Bool {
+        get { true }
+        set {}
+    }
+    
+    override func mouseMoved(with event: NSEvent) {
+        self.performDrag(with: event)
+    }
 }
 
-// TODO: RoundedRectangleのドラッグでWindowを移動できるようにする
 struct TextEditorView: View {
     @State private var text = ""
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .foregroundColor(.gray.opacity(0.2))
+                .foregroundColor(.gray)
             TextEditor(text: $text)
                 .padding(10)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
